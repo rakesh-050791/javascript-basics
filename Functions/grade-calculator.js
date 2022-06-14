@@ -3,9 +3,9 @@
 // A 90 - 100, B 80 - 89 , C 70 - 79, D 60 - 69 , E 50 - 59
 
 
-let gradeCalculator = function(scoreSecured, possibleScore) {
+const gradeCalculator = function(scoreSecured, possibleScore) {
 
-    let percentage = (scoreSecured / possibleScore) * 100
+    const percentage = (scoreSecured / possibleScore) * 100
     let letterGrade = ''
 
     if (percentage >= 90) {
@@ -35,5 +35,10 @@ let gradeCalculator = function(scoreSecured, possibleScore) {
     return `You got ${letterGrade} with ${percentage}%`
 }
 
-let percentage = gradeCalculator(34, 50)
-console.log(percentage)
+const result = gradeCalculator(30, 50)
+
+console.log(result)
+
+console.log(gradeCalculator(34, 50))
+
+console.log(gradeCalculator(40, 50))
