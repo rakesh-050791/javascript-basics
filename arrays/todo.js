@@ -41,3 +41,40 @@ console.log('-*-*-*-*Iterating todos using for loop-*-*-*-*-*-*-')
 for (let count = 0; count < todos.length ; count++) {
     console.log(`${count + 1} : ${todos[count]}`)
 }
+
+// New Challenge
+console.log('-*-*-*-* New Challenge-*-*-*-*-*-*-')
+
+// Convert array to array of objects  -> text , completed 
+// Create a function to delete a todo by text value 
+todos_1 = [
+    {
+        text: 'Getup at 6 o clock',
+        completed: true
+    },
+    {
+        text: 'Go for run',
+        completed: true
+    },
+    {
+        text: 'prepare coffee',
+        completed: true
+    },
+    {
+        text: 'read newspaper',
+        completed: false
+    }
+]
+
+const deleteTodo =  function(todos, todoText){
+    const index = todos.findIndex(function(todo, index){
+        return todo.text.toLowerCase() === todoText.toLowerCase()
+    })
+
+    if (index >= 0) {
+        todos.splice(index, 1)
+    }
+}
+
+deleteTodo(todos_1, 'Go for run')
+console.log(todos_1)

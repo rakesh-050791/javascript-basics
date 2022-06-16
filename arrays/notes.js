@@ -86,3 +86,54 @@ console.log('-*-*-*-*Reverse Loop-*-*-*-*-*-*-')
 for (let count = notes_1.length - 1; count >= 0; count--) {
     console.log(`Printing notes  ${notes_1[count]}`)
 }
+
+console.log('-*-*-*-*Reverse Loop-*-*-*-*-*-*-')
+console.log(notes)
+console.log(notes.indexOf('Note 4'))
+
+console.log('-*-*-*-*Index Off-*-*-*-*-*-*-')
+
+const notes_2 = [ 
+    {
+        title: 'My next trip',
+        body: 'I would like to go to India'
+    },
+    {
+        title: 'Habbits to work on',
+        body: 'Exercise, Eating a bit better'
+    },
+    {
+        title: 'Office modification',
+        body: 'Get a new seat'
+    }
+]
+
+// const index = notes_2.findIndex( function(note, index) {
+//     console.log(note)
+//     return note.title === 'Habbits to work on'
+// })
+// console.log(index)
+
+// const findNote = function(notes, noteTitle) {
+//     const index = notes.findIndex(function(note, index) {
+//         // return note.title === noteTitle
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+//     return notes_2[index]
+// }
+
+// const findNote = function(notes, noteTitle) {
+//     const note = notes.find(function(note, index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+//     return note
+// }
+
+
+const findNote = function(notes, noteTitle) {
+    return notes.find(function(note, index) {
+        return note.title.toLowerCase() === noteTitle.toLowerCase()
+    })
+}
+const note = findNote(notes_2, 'OFFICE MODIFICATION')
+console.log(note)
