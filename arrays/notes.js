@@ -135,5 +135,48 @@ const findNote = function(notes, noteTitle) {
         return note.title.toLowerCase() === noteTitle.toLowerCase()
     })
 }
-const note = findNote(notes_2, 'OFFICE MODIFICATION')
-console.log(note)
+// const note = findNote(notes_2, 'OFFICE MODIFICATION')
+// console.log(note)
+console.log('Index Off-*-*-*-*Index Off-*-*-*-*-*-*-Index Off')
+
+console.log('FILTER-*-*-*-*FILTER*-*-*-*-*-*-FILTER')
+
+// const filterNotes =  notes_2.filter(function(note, index){
+//     const isTitleMatch = note.title.toLowerCase().includes('ne')
+//     const isBodyMatch = note.body.toLowerCase().includes('ne')
+//     return isTitleMatch || isBodyMatch
+// })
+
+// console.log(filterNotes)
+
+const findNotes = function(notes, query) {
+    const filterNotes =  notes.filter(function(note, index){
+        const isTitleMatch = note.title.toLowerCase().includes(query.toLowerCase())
+        const isBodyMatch = note.body.toLowerCase().includes(query.toLowerCase())
+        return isTitleMatch || isBodyMatch
+    })
+    return filterNotes
+}
+console.log(findNotes(notes_2, 'trip'))
+
+console.log('FILTER-*-*-*-*FILTER*-*-*-*-*-*-FILTER')
+
+
+console.log('SORT ARRAY-*-*-*-*SORT ARRAY*-*-*-*-*-*-SORT ARRAY')
+
+console.log(notes_2)
+
+const sortNotes = function(notes) {
+    notes.sort(function(a, b) {
+        if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1
+        } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+sortNotes(notes_2)
+console.log(notes_2)
+console.log('SORT ARRAY-*-*-*-*SORT ARRAY*-*-*-*-*-*-SORT ARRAY')

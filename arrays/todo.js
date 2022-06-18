@@ -63,6 +63,10 @@ todos_1 = [
     {
         text: 'read newspaper',
         completed: false
+    },
+    {
+        text: 'Attend daily stand up',
+        completed: false
     }
 ]
 
@@ -71,10 +75,44 @@ const deleteTodo =  function(todos, todoText){
         return todo.text.toLowerCase() === todoText.toLowerCase()
     })
 
-    if (index >= 0) {
+    if (index >= -1) {
         todos.splice(index, 1)
     }
 }
 
 deleteTodo(todos_1, 'Go for run')
 console.log(todos_1)
+
+// New Challenge
+console.log('Filter results challenge-*-*-*-* Filter results challenge-*-*-*-*-*-*-Filter results challenge')
+
+// write a function to return todos that are yet to be done.
+
+const getThingsToDo = function(todos) {
+    return todos.filter(function(todo) {
+        // return todo.completed === false
+        return !todo.completed
+    })
+}
+console.log(getThingsToDo(todos_1))
+
+console.log('Filter results challenge-*-*-*-* Filter results challenge-*-*-*-*-*-*-Filter results challenge')
+
+
+console.log('SORT TODOS Challenge-*-*-*-*SORT TODOS Challenge*-*-*-*-*-*-SORT TODOS Challenge')
+console.log(todos_1)
+
+const sortTodos = function(todos) {
+    todos.sort(function(a,b) {
+        if (!a.completed && b.completed) {
+            return -1
+        } else if (!b.completed && a.completed){
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+sortTodos(todos_1)
+console.log(todos_1)
+console.log('SORT TODOS Challenge-*-*-*-*SORT TODOS Challenge*-*-*-*-*-*-SORT TODOS Challenge')
