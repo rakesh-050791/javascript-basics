@@ -1,0 +1,1 @@
+console.log("I am inside notes-app.js file")
