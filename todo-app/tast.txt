@@ -7,3 +7,7 @@
 4 : Create a link to javascript file to the html 
 
 5 : Remove all p tags which have "the" in the text.
+
+6 : You have 2 todos left (p element)
+
+7 : add a p for ech todo above (use text value)
