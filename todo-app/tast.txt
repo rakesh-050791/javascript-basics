@@ -1,0 +1,9 @@
+1 : Create a new html file 
+
+2 : Add, 1 h1 and 5 p tags 
+
+3 : Server that folder and view the doc in the browser     
+
+4 : Create a link to javascript file to the html 
+
+5 : Remove all p tags which have "the" in the text.
