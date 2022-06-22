@@ -39,8 +39,27 @@ const notes = [
 
 // document.querySelector('body').appendChild(newParagraph)
 
-document.querySelector('button').addEventListener('click', function(e){
+document.querySelector('#create-note').addEventListener('click', function(e){
     // console.log('Did this work ?')
     // console.log(e)
     e.target.textContent = 'This button was clicked!'
 })
+
+document.querySelector('#remove-all-notes').addEventListener('click', function(e){
+    // console.log('Remove all notes')
+    document.querySelectorAll('.note').forEach(function(note) {
+        note.remove()
+    })
+})
+
+
+// -- Single --
+// p
+// replace
+//.item
+
+// -- Multiple -- 
+// p#order
+// button.inventory 
+// h1#title.application
+// h1.applicatiom#title
