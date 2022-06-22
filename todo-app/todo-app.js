@@ -34,8 +34,6 @@ const todosLeft = todos.filter(function(todo) {
     return !todo.completed
 })
 
-console.log(todosLeft)
-
 const summary = document.createElement('h2')
 summary.textContent = `You have ${todosLeft.length} todos left`
 document.querySelector('body').appendChild(summary)
@@ -45,4 +43,10 @@ todos.forEach(function(todo) {
     const newTodo = document.createElement('p')
     newTodo.textContent = todo.text
     document.querySelector('body').appendChild(newTodo)
+})
+
+
+// Listen for new todo creation
+document.querySelector('button').addEventListener('click', function() {
+    console.log('Add new todo')
 })

@@ -23,18 +23,24 @@ const notes = [
 
 
 // Query all & remove 
-const ps = document.querySelectorAll('p')
-ps.forEach(function(p) {
-    // p.remove()
-    // console.log(p.textContent)
-    p.textContent += '**'
-    console.log(p.textContent)
+// const ps = document.querySelectorAll('p')
+// ps.forEach(function(p) {
+//     // p.remove()
+//     // console.log(p.textContent)
+//     p.textContent += '**'
+//     console.log(p.textContent)
+// })
+
+
+
+// // Add new element 
+// const newParagraph = document.createElement('p')
+// newParagraph.textContent = 'This is new element from JS'
+
+// document.querySelector('body').appendChild(newParagraph)
+
+document.querySelector('button').addEventListener('click', function(e){
+    // console.log('Did this work ?')
+    // console.log(e)
+    e.target.textContent = 'This button was clicked!'
 })
-
-
-
-// Add new element 
-const newParagraph = document.createElement('p')
-newParagraph.textContent = 'This is new element from JS'
-
-document.querySelector('body').appendChild(newParagraph)
