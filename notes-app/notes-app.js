@@ -39,6 +39,19 @@ const notes = [
 
 // document.querySelector('body').appendChild(newParagraph)
 
+const filters = {
+    searchText: ''
+}
+
+const renderNotes = function(notes, filters){
+    const filteredNotes = notes.filter(function(note) {
+       return note.title.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
+    })
+    console.log(filteredNotes)
+}
+
+renderNotes(notes, filters)
+
 document.querySelector('#create-note').addEventListener('click', function(e){
     // console.log('Did this work ?')
     // console.log(e)
@@ -53,7 +66,9 @@ document.querySelector('#remove-all-notes').addEventListener('click', function(e
 })
 
 document.querySelector('#search-text').addEventListener('input', function(e){
-    console.log(e.target.value)
+    // console.log(e.target.value)
+    filters.searchText = e.target.value
+    renderNotes(notes, filters)
 })
 
 
