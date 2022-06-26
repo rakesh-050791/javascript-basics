@@ -37,13 +37,29 @@ todos = [
 // 3 : Create a renderTodos function to render and render the latest filtered data 
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    hideComplete: false
 }
 
 const renderTodos = function(todos, filters) {
+    // let filteredTodos = todos.filter(function (todo) {
+    //     return todo.text.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
+    // }) 
+
     const filteredTodos = todos.filter(function (todo) {
-        return todo.text.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
+        const searchTextMatch =  todo.text.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
+        const hideCompleteMatch = !filters.hideComplete || !todo.completed 
+        return searchTextMatch && hideCompleteMatch 
     }) 
+
+    // filteredTodos = filteredTodos.filter(function(todo) {
+    //     return !filters.hideComplete || !todo.completed
+    //     // if (filters.hideComplete) {
+    //     //     return !todo.completed
+    //     // } else {
+    //     //     return true
+    //     // }
+    // })
 
     document.querySelector('#todos').innerHTML = ''
 
@@ -97,4 +113,11 @@ document.querySelector('#todo-form').addEventListener('submit', function(e) {
     })
     renderTodos(todos, filters)
     e.target.elements.newTodo.value = ''
+})
+
+
+document.querySelector('#hide-completed').addEventListener('change', function ( e ) {
+    // console.log(e.target.checked)
+    filters.hideComplete = e.target.checked
+    renderTodos(todos, filters)
 })
