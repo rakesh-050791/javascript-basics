@@ -30,20 +30,39 @@ todos = [
 //     }
 // })
 
-const todosLeft = todos.filter(function(todo) {
-    return !todo.completed
-})
+// 1 : Setup a div contain for todos 
+// 2 : SetupFilters (searchText) & wire up a new filter input to change it.
+// 3 : Create a renderTodos function to render and render the latest filtered data 
 
-const summary = document.createElement('h2')
-summary.textContent = `You have ${todosLeft.length} todos left`
-document.querySelector('body').appendChild(summary)
+const filters = {
+    searchText: ''
+}
 
-todos.forEach(function(todo) {
-    // console.log(todo.text)
-    const newTodo = document.createElement('p')
-    newTodo.textContent = todo.text
-    document.querySelector('body').appendChild(newTodo)
-})
+const renderTodos = function(todos, filters) {
+    const filteredTodos = todos.filter(function (todo) {
+        return todo.text.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
+    }) 
+
+    document.querySelector('#todos').innerHTML = ''
+
+    const todosLeft = filteredTodos.filter(function(todo) {
+        return !todo.completed
+    })
+    
+    const summary = document.createElement('h2')
+    summary.textContent = `You have ${todosLeft.length} todos left`
+    document.querySelector('#todos').appendChild(summary)
+    
+    filteredTodos.forEach(function(todo) {
+        // console.log(todo.text)
+        const newTodo = document.createElement('p')
+        newTodo.textContent = todo.text
+        document.querySelector('#todos').appendChild(newTodo)
+    })
+}
+
+renderTodos(todos, filters)
+
 
 
 // Listen for new todo creation
@@ -53,4 +72,10 @@ document.querySelector('#create-todo').addEventListener('click', function() {
 
 document.querySelector('#new-todo-text').addEventListener('input', function(e){
     console.log(e.target.value)
+})
+
+document.querySelector('#filter-todos').addEventListener('input', function(e) {
+    // console.log(e)
+    filters.searchText = e.target.value
+    renderTodos(todos, filters)
 })

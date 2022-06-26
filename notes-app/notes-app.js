@@ -45,9 +45,16 @@ const filters = {
 
 const renderNotes = function(notes, filters){
     const filteredNotes = notes.filter(function(note) {
-       return note.title.toLowerCase().includes(filters.searchText.toLocaleLowerCase())
+       return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
     })
-    console.log(filteredNotes)
+
+    document.querySelector('#notes').innerHTML = ''
+
+    filteredNotes.forEach(function (note) {
+        const noteEl = document.createElement('p')
+        noteEl.textContent = note.title
+        document.querySelector('#notes').appendChild(noteEl)
+    })
 }
 
 renderNotes(notes, filters)
