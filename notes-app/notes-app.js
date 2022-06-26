@@ -89,6 +89,9 @@ document.querySelector('#for-fun').addEventListener('change', function(e) {
     console.log(e.target.checked)
 })
 
+document.querySelector('#filter-by').addEventListener('change', function(e) {
+    console.log(e.target.value)
+})
 
 
 
