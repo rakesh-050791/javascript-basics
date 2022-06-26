@@ -91,14 +91,10 @@ document.querySelector('#filter-todos').addEventListener('input', function(e) {
 
 document.querySelector('#todo-form').addEventListener('submit', function(e) {
     e.preventDefault()
-
-    const newTodo = {
+    todos.push({
         text: e.target.elements.newTodo.value,
         completed: false
-    }
-
-    todos.push(newTodo)
-
-    e.target.elements.newTodo.value = ''
+    })
     renderTodos(todos, filters)
+    e.target.elements.newTodo.value = ''
 })
