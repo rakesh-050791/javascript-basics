@@ -30,6 +30,8 @@ todos = [
 //     }
 // })
 
+
+// Task
 // 1 : Setup a div contain for todos 
 // 2 : SetupFilters (searchText) & wire up a new filter input to change it.
 // 3 : Create a renderTodos function to render and render the latest filtered data 
@@ -66,16 +68,37 @@ renderTodos(todos, filters)
 
 
 // Listen for new todo creation
-document.querySelector('#create-todo').addEventListener('click', function() {
-    console.log('Add new todo')
-})
+// document.querySelector('#create-todo').addEventListener('click', function() {
+//     console.log('Add new todo')
+// })
 
-document.querySelector('#new-todo-text').addEventListener('input', function(e){
-    console.log(e.target.value)
-})
+// document.querySelector('#new-todo-text').addEventListener('input', function(e){
+//     console.log(e.target.value)
+// })
 
 document.querySelector('#filter-todos').addEventListener('input', function(e) {
     // console.log(e)
     filters.searchText = e.target.value
+    renderTodos(todos, filters)
+})
+
+
+// Create a form with a single input for todo text
+// setup a submit handler and cancel the default action 
+// add a new item to the todos array with that text data  (completed value as false)
+// Re render the application 
+// clear the input field value
+
+document.querySelector('#todo-form').addEventListener('submit', function(e) {
+    e.preventDefault()
+
+    const newTodo = {
+        text: e.target.elements.newTodo.value,
+        completed: false
+    }
+
+    todos.push(newTodo)
+
+    e.target.elements.newTodo.value = ''
     renderTodos(todos, filters)
 })

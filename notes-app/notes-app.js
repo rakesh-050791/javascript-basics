@@ -65,17 +65,23 @@ document.querySelector('#create-note').addEventListener('click', function(e){
     e.target.textContent = 'This button was clicked!'
 })
 
-document.querySelector('#remove-all-notes').addEventListener('click', function(e){
-    // console.log('Remove all notes')
-    document.querySelectorAll('.note').forEach(function(note) {
-        note.remove()
-    })
-})
+// document.querySelector('#remove-all-notes').addEventListener('click', function(e){
+//     // console.log('Remove all notes')
+//     document.querySelectorAll('.note').forEach(function(note) {
+//         note.remove()
+//     })
+// })
 
 document.querySelector('#search-text').addEventListener('input', function(e){
     // console.log(e.target.value)
     filters.searchText = e.target.value
     renderNotes(notes, filters)
+})
+
+document.querySelector('#name-form').addEventListener('submit', function(e) {
+    e.preventDefault()
+    console.log(e.target.elements.firstName.value)
+    e.target.elements.firstName.value = ''
 })
 
 
