@@ -43,6 +43,29 @@ const filters = {
     searchText: ''
 }
 
+//    localStorage.setItem('location', 'Delhi')        // C
+//    console.log(localStorage.getItem('location'))    // R
+//    localStorage.setItem('location', 'Austria')      // U
+//    localStorage.removeItem('location')              // D
+
+//    localStorage.clear() // Will delete everything from localstorage irrespective of key
+
+// const user = {
+//     name: 'Andy',
+//     age: 30
+// }
+
+// const userJSON = JSON.stringify(user)
+// console.log(userJSON)
+
+// localStorage.setItem('user', userJSON)
+// console.log(localStorage.getItem('user'))
+
+const userJSON = localStorage.getItem('user')
+const user = JSON.parse(userJSON)
+console.log(`${user.name} is ${user.age}`)
+
+
 const renderNotes = function(notes, filters){
     const filteredNotes = notes.filter(function(note) {
        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
