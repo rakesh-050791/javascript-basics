@@ -1,17 +1,19 @@
-const notes = [ 
-    {
-        title: 'My next trip',
-        body: 'I would like to go to India'
-    },
-    {
-        title: 'Habbits to work on',
-        body: 'Exercise, Eating a bit better'
-    },
-    {
-        title: 'Office modification',
-        body: 'Get a new seat'
-    }
-]
+// const notes = [ 
+//     {
+//         title: 'My next trip',
+//         body: 'I would like to go to India'
+//     },
+//     {
+//         title: 'Habbits to work on',
+//         body: 'Exercise, Eating a bit better'
+//     },
+//     {
+//         title: 'Office modification',
+//         body: 'Get a new seat'
+//     }
+// ]
+
+let notes = []
 
 
 // DOM - Document object model
@@ -61,9 +63,16 @@ const filters = {
 // localStorage.setItem('user', userJSON)
 // console.log(localStorage.getItem('user'))
 
-const userJSON = localStorage.getItem('user')
-const user = JSON.parse(userJSON)
-console.log(`${user.name} is ${user.age}`)
+// const userJSON = localStorage.getItem('user')
+// const user = JSON.parse(userJSON)
+// console.log(`${user.name} is ${user.age}`)
+
+
+const notesJSON = localStorage.getItem('notes')
+
+if (notesJSON != null) {
+    notes = JSON.parse(notesJSON)
+}
 
 
 const renderNotes = function(notes, filters){
@@ -75,7 +84,16 @@ const renderNotes = function(notes, filters){
 
     filteredNotes.forEach(function (note) {
         const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
+
+        
+
+        if (note.title.length > 0) {
+            noteEl.textContent = note.title
+        } else {
+            noteEl.textContent = 'Unnamed Note'
+        }
+ 
+        // noteEl.textContent = note.title
         document.querySelector('#notes').appendChild(noteEl)
     })
 }
@@ -85,7 +103,15 @@ renderNotes(notes, filters)
 document.querySelector('#create-note').addEventListener('click', function(e){
     // console.log('Did this work ?')
     // console.log(e)
-    e.target.textContent = 'This button was clicked!'
+    // e.target.textContent = 'This button was clicked!'
+
+    notes.push({
+        title: '',
+        body: ''
+    })
+
+    localStorage.setItem('notes', JSON.stringify(notes))
+    renderNotes(notes, filters)
 })
 
 // document.querySelector('#remove-all-notes').addEventListener('click', function(e){

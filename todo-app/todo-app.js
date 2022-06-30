@@ -1,25 +1,27 @@
-todos = [
-    {
-        text: 'Getup at 6 o clock',
-        completed: true
-    },
-    {
-        text: 'Go for run',
-        completed: true
-    },
-    {
-        text: 'prepare coffee',
-        completed: true
-    },
-    {
-        text: 'read newspaper',
-        completed: false
-    },
-    {
-        text: 'Attend daily stand up',
-        completed: false
-    }
-]
+// todos = [
+//     {
+//         text: 'Getup at 6 o clock',
+//         completed: true
+//     },
+//     {
+//         text: 'Go for run',
+//         completed: true
+//     },
+//     {
+//         text: 'prepare coffee',
+//         completed: true
+//     },
+//     {
+//         text: 'read newspaper',
+//         completed: false
+//     },
+//     {
+//         text: 'Attend daily stand up',
+//         completed: false
+//     }
+// ]
+
+let todos = []
 
 // const paragraphs = document.querySelectorAll('p')
 
@@ -30,6 +32,16 @@ todos = [
 //     }
 // })
 
+// Task
+// 1 : Delete dummy data 
+// 2 : Read and parse the data when the app starts up 
+// 3 : Stringfy and write the data when the data is added
+
+const todosJSON = localStorage.getItem('todos')
+
+if (todosJSON != null) {
+    todos = JSON.parse(todosJSON)
+}
 
 // Task
 // 1 : Setup a div contain for todos 
@@ -74,8 +86,16 @@ const renderTodos = function(todos, filters) {
     filteredTodos.forEach(function(todo) {
         // console.log(todo.text)
         const newTodo = document.createElement('p')
-        newTodo.textContent = todo.text
+        // newTodo.textContent = todo.text
+
+        if (todo.text.length > 0) {
+            newTodo.textContent = todo.text
+        } else {
+            newTodo.textContent = 'Unnamed TODO'
+        }
+
         document.querySelector('#todos').appendChild(newTodo)
+
     })
 }
 
@@ -111,6 +131,8 @@ document.querySelector('#todo-form').addEventListener('submit', function(e) {
         text: e.target.elements.newTodo.value,
         completed: false
     })
+
+    localStorage.setItem('todos', JSON.stringify(todos))
     renderTodos(todos, filters)
     e.target.elements.newTodo.value = ''
 })
