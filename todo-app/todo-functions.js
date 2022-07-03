@@ -14,7 +14,6 @@ const saveTodos = function (todos) {
     localStorage.setItem('todos', JSON.stringify(todos))
 }
 
-
 // Render application todos based on filters 
 const renderTodos = function(todos, filters) {
     const filteredTodos = todos.filter(function (todo) {
@@ -43,13 +42,24 @@ const renderTodos = function(todos, filters) {
 
 // Get the DOM element for individual todo
 const generateTodoDOM = function (todo) {
-    const newTodo = document.createElement('p')
-        if (todo.text.length > 0) {
-            newTodo.textContent = todo.text
-        } else {
-            newTodo.textContent = 'Unnamed TODO'
-        }
-    return newTodo
+    const todoEL = document.createElement('div')
+    const checkbox = document.createElement('input')
+    const todoText = document.createElement('span')
+    const removeButton = document.createElement('button')
+
+    // setup todo checkbox
+    checkbox.setAttribute('type', 'checkbox')
+    todoEL.appendChild(checkbox)
+
+    //setup the todo text 
+    todoText.textContent = todo.text
+    todoEL.appendChild(todoText)
+
+    // setup teh remove button 
+    removeButton.textContent = 'X'
+    todoEL.appendChild(removeButton)
+
+    return todoEL
 }
 
 // Get the DOM elements for list summary 
